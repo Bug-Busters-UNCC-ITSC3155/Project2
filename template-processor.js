@@ -7,17 +7,17 @@ class TemplateProcessor{
     }
 
     fillIn(dictionary){
-        var str = this.template;
-        str = str.split(/{{.*?}}/);
+        let str = this.template;
+        let matches = str.match(/{{.*?}}/g);
 
-        for(let i = 0; i < str.length;i++){
-            for((key,value) in dictionary){
-                if(str[i] == key){
-                    str[i] = value;
-                }
-            }
-            
+
+        for (let i in matches){
+            let match = matches[i];
+            let value = dictionary[match.substring(2, match.indexOf("}}"))] || " ";
+            str = str.replace(match, value);
         }
+        
+        return str;
 
             
     }
