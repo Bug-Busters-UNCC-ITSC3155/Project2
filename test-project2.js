@@ -14,7 +14,7 @@ let p2Message = 'SUCCESS';
 let p3Message = 'SUCCESS';
 
 // Keep track of all the var statements
-let varDeclared = ['varDeclared', 'p1Message', 'p2Message', 'p3Message'];
+const varDeclared = ['varDeclared', 'p1Message', 'p2Message', 'p3Message'];
 
 // Utility functions
 function arraysAreTheSame(a1, a2) {
@@ -111,15 +111,15 @@ if (typeof TemplateProcessor !== 'function') {
   console.error('TemplateProcessor is not a function', typeof TemplateProcessor);
   p2Message = 'FAILURE';
 } else {
-  let template = 'My favorite month is {{month}} but not the day {{day}} or the year {{year}}';
-  let dateTemplate = new TemplateProcessor(template);
+  const template = 'My favorite month is {{month}} but not the day {{day}} or the year {{year}}';
+  const dateTemplate = new TemplateProcessor(template);
 
-  let dictionary = { month: 'July', day: '1', year: '2016' };
-  let str = dateTemplate.fillIn(dictionary);
+  const dictionary = { month: 'July', day: '1', year: '2016' };
+  const str = dateTemplate.fillIn(dictionary);
 
   if (str !== 'My favorite month is July but not the day 1 or the year 2016') {
     console.error('TemplateProcessor didn\'t work');
-    console.error(str)
+    console.error(str);
     p2Message = 'FAILURE';
   }
   varDeclared.push('template');

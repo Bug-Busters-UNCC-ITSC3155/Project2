@@ -8,14 +8,16 @@ class TemplateProcessor{
 
     fillIn(dictionary){
         let str = this.template;
-        let matches = str.match(/{{.*?}}/g);
+        const matches = str.match(/{{.*?}}/g);
 
-
-        for (let i in matches){
-            let match = matches[i];
-            let value = dictionary[match.substring(2, match.indexOf("}}"))] || " ";
-            str = str.replace(match, value);
+        for (const i in matches){
+            if (matches[i] != null){
+                const match = matches[i];
+                const value = dictionary[match.substring(2, match.indexOf("}}"))] || " ";
+                str = str.replace(match, value);
+            }
         }
+        
         
         return str;
 
